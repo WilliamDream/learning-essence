@@ -5,13 +5,12 @@ import java.lang.annotation.*;
 /**
  * @Author: WilliamDream
  * @Description:
- * @Date: 2019/7/14 22:04
+ * @Date: 2019/7/14 22:31
  */
-
-@Target(ElementType.TYPE)
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface MyService {
+public @interface MyAutoWired {
 
     String value() default "";
 

@@ -1,5 +1,8 @@
 package com.william.minispringmvc.servlet;
 
+import com.william.minispringmvc.annotation.MyController;
+import com.william.minispringmvc.annotation.MyService;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,9 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * @Author: WilliamDream
@@ -23,6 +24,8 @@ public class MyDispatcherServlet extends HttpServlet {
     private Properties properties = new Properties();
 
     private List<String> classNameList = new ArrayList<>();
+
+    private Map<String,Object> IOC = new HashMap<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,7 +44,7 @@ public class MyDispatcherServlet extends HttpServlet {
         doLoadConfig("");
 
         //2、扫描相关类
-        doScan();
+        doScan("");
 
         //3、初始化相关类，并放入到IOC容器中
         doInstance();
@@ -109,18 +112,42 @@ public class MyDispatcherServlet extends HttpServlet {
             return;
         try {
             for (String className : classNameList){
+                Class<?> clazz = Class.forName(className);
+                //只需要初始化带有MyController和MyService
+                String name = clazz.getSimpleName();
+                if(clazz.isAnnotationPresent(MyController.class)){
+                    Object instance = clazz.newInstance();
+                    name = lowerFirstChar(name);
+                    IOC.put(name,instance);
 
+                }else if(clazz.isAnnotationPresent(MyService.class)){
+                    //1、默认类名首字母小写
+                    String beanName = lowerFirstChar(name);
+                    //2、自定义类名
+                    MyService service = clazz.getAnnotation(MyService.class);
+                    if(!"".equals(service.value())){
+                        beanName = service.value();
+                    }
+                    //3、根据类型自动赋值
+                    
+
+
+
+                }
 
             }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-
-
-
-
     }
 
+
+    private String lowerFirstChar(String name){
+        char[] chars = name.toCharArray();
+        chars[0] += 32;
+        return String.valueOf(chars);
+
+    }
 
 }

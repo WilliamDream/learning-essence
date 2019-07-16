@@ -127,9 +127,15 @@ public class MyDispatcherServlet extends HttpServlet {
                     MyService service = clazz.getAnnotation(MyService.class);
                     if(!"".equals(service.value())){
                         beanName = service.value();
+                        IOC.put(beanName,clazz.newInstance());
+                        continue;
                     }
                     //3、根据类型自动赋值
-                    
+                    //?????????????????
+                    Class<?>[] intencefaces = clazz.getInterfaces();
+                    for (Class<?> i : intencefaces){
+                        IOC.put(i.getName(),clazz.newInstance());
+                    }
 
 
 

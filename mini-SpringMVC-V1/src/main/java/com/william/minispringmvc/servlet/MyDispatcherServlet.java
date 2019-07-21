@@ -244,10 +244,24 @@ public class MyDispatcherServlet extends HttpServlet {
 
             Object [] paramValues = new Object[paramTypes.length];
             Map<String,String[]> params = req.getParameterMap();
+            for (Map.Entry<String,String[]> param : params.entrySet()){
+                String value = Arrays.toString(param.getValue()).replaceAll("\\[|\\]", "").replaceAll(",\\s", ",");
+                if(!handler.paramIndexMapping.containsKey(param.getKey())){continue;}
+                int index = handler.paramIndexMapping.get(param.getKey());
+                paramValues[index] = convert(paramTypes[index],value);
+            }
 
+            //设置方法中的request和response对象
+            int reqIndex = handler.paramIndexMapping.get(HttpServletRequest.class.getName());
+            paramValues[reqIndex] = req;
+            int respIndex = handler.paramIndexMapping.get(HttpServletResponse.class.getName());
+            paramValues[respIndex] = resp;
 
+            Object res = handler.method.invoke(handler.controller, paramValues);
+            if(res instanceof Void)
+                return;
 
-
+            resp.getWriter().write(res.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -328,6 +342,17 @@ public class MyDispatcherServlet extends HttpServlet {
         }
 
 
+    }
+
+    //只需要把String转换为任意类型就好
+    private Object convert(Class<?> type,String value){
+        if(Integer.class == type){
+            return Integer.valueOf(value);
+        }
+        //如果还有double或者其他类型，继续加if
+        //这时候，我们应该想到策略模式了
+        //在这里暂时不实现，希望小伙伴自己来实现
+        return value;
     }
 
 }

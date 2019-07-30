@@ -25,6 +25,8 @@ import java.util.regex.Pattern;
  */
 public class MyDispatcherServlet extends HttpServlet {
 
+    private static final String LOCATION = "contextConfigLocation";
+
     private Properties properties = new Properties();
 
     private List<String> classNameList = new ArrayList<>();
@@ -50,10 +52,10 @@ public class MyDispatcherServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 
         //1、加载配置文件
-        doLoadConfig("");
+        doLoadConfig(config.getInitParameter(LOCATION));
 
         //2、扫描相关类
-        doScan("");
+        doScan(properties.getProperty("scanPackage"));
 
         //3、初始化相关类，并放入到IOC容器中
         doInstance();

@@ -13,7 +13,7 @@
         <module>rmi-server</module>
         <module>rpc-server</module>
         <module>mini-SpringMVC-V1</module>
-
+        <module>spring-enable</module>
     </modules>
 
 </project>

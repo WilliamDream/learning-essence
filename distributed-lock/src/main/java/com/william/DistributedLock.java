@@ -1,10 +1,8 @@
 package com.william;
 
 import org.apache.zookeeper.*;
-
 import org.apache.zookeeper.data.Stat;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -23,7 +21,7 @@ import java.util.concurrent.locks.Lock;
 public class DistributedLock implements Lock,Watcher{
 
     //根节点
-    private String ROOT_NODE = "/rook";
+    private String ROOT_NODE = "/root";
     //当前获得锁节点
     private String CURRENT_LOCK;
     //等待上一个节点

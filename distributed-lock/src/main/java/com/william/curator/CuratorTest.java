@@ -1,4 +1,4 @@
-package com.william;
+package com.william.curator;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -13,8 +13,10 @@ public class CuratorTest {
 
     public static void main(String[] args) {
 
-        CuratorFramework curatorFramework = CuratorFrameworkFactory.builder().build();
+        CuratorFramework curatorFramework = CuratorFrameworkFactory.builder().connectString();
         InterProcessMutex interProcessMutex = new InterProcessMutex(curatorFramework,"/userservice");
+
+
         try {
             interProcessMutex.acquire();
         } catch (Exception e) {

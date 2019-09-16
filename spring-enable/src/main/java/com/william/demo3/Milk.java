@@ -7,14 +7,16 @@ package com.william.demo3;
  */
 
 
-public interface Server {
+public interface Milk {
 
-    void start();
+    void processMilk();
 
-    void stop();
+    void getMilk();
+
 
     enum Type{
-
+        MENGNIU,
+        YILI
     }
 
 }

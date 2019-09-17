@@ -1,7 +1,5 @@
 package com.william.demo4;
 
-import com.william.demo3.EnableDemoMain;
-import com.william.demo3.EnableMilk;
 import com.william.demo3.Milk;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;

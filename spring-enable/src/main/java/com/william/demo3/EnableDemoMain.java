@@ -21,7 +21,5 @@ public class EnableDemoMain {
         milk.processMilk();
         milk.getMilk();
 
-
     }
-
 }

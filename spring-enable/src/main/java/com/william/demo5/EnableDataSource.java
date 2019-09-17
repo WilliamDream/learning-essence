@@ -1,5 +1,7 @@
-package com.william.demo3;
+package com.william.demo5;
 
+import com.william.demo3.Milk;
+import com.william.demo4.MilkImportBeanDefinitionRegistrar;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -13,11 +15,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Import(MilkImportSelector.class)
-public @interface EnableMilk {
+@Import(DataSourceConfiguration.class)
+public @interface EnableDataSource {
 
-    Milk.Type type();
 
-    String name();
 
 }

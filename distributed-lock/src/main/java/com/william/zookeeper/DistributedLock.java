@@ -1,4 +1,4 @@
-package com.william;
+package com.william.zookeeper;
 
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;

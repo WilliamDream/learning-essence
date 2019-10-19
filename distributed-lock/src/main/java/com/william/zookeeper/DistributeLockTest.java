@@ -1,4 +1,6 @@
-package com.william;
+package com.william.zookeeper;
+
+import com.william.zookeeper.DistributedLock;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;

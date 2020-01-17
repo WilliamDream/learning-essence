@@ -20,6 +20,7 @@ import java.util.concurrent.locks.Lock;
  */
 public class DistributedLock implements Lock,Watcher{
 
+    private String connectString = "192.168.0.63:2181";
     //根节点
     private String ROOT_NODE = "/root";
     //当前获得锁节点
@@ -34,7 +35,7 @@ public class DistributedLock implements Lock,Watcher{
 
     public DistributedLock(){
         try {
-            zookeeper = new ZooKeeper("",4000,this);
+            zookeeper = new ZooKeeper(connectString,4000,this);
             Stat stat = zookeeper.exists(ROOT_NODE,false);
             if (stat == null){
                 zookeeper.create(ROOT_NODE,"0".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
@@ -62,7 +63,9 @@ public class DistributedLock implements Lock,Watcher{
             SortedSet<String> node = sortedSet.headSet(CURRENT_LOCK);
             //当前节点与第一个节点进行笔记，相同则成功获取到锁
             if(CURRENT_LOCK.equals(node)){
+                System.out.println(Thread.currentThread().getName()+"获得锁成功");
                 return true;    //获取锁成功
+
             }
             if(!node.isEmpty()){
                 WAIT_NODE = node.last();    //把该节点赋给下一个等待节点
@@ -128,7 +131,7 @@ public class DistributedLock implements Lock,Watcher{
 
     @Override
     public void unlock() {
-            System.out.println(Thread.currentThread().getName() + "====" + CURRENT_LOCK + "====" + "获取释放锁!");
+            System.out.println(Thread.currentThread().getName() + "====" + CURRENT_LOCK + "====" + "释放锁!");
             try {
                 zookeeper.delete(CURRENT_LOCK,-1);
                 CURRENT_LOCK = null;

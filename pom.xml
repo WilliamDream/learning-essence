@@ -16,6 +16,8 @@
         <module>spring-enable</module>
         <module>formatter-spring-boot-starter</module>
         <module>mini-spring</module>
+        <module>distributed-lock-demo</module>
+        <module>distributed-tx-demo</module>
     </modules>
 
 </project>

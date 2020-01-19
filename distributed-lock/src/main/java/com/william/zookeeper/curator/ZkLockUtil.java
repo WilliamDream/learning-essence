@@ -28,9 +28,9 @@ public class ZkLockUtil {
     //分布式锁,用于挂起当前线程,等待上一把分布式锁释放
     private static CountDownLatch DISTRIBUTE_LOCK = new CountDownLatch(1);
     //分布式锁的总结点名
-    private final static String ZK_LOCK_PROJECT = "zk_lock";
+    private final static String ZK_LOCK_PROJECT = "zk-lock";
     //分布式锁节点名
-    private final static String DISTRIBUTE_LOCK_NAME = "distribute_lock";
+    private final static String DISTRIBUTE_LOCK_NAME = "distribute-lock";
 
     /**
      * 与zk建立连接
@@ -75,14 +75,15 @@ public class ZkLockUtil {
     }
 
     /**
-     * 释放锁资源
+     * 释放锁资源 1 2 3 4 5 6 7 8 9 10
      */
     public static void  release(String path) {
         CuratorFramework client = build();
         client.start();
         try {
             client.delete().forPath(path);
-            System.out.println(Thread.currentThread().getName()+"---锁释放成功...");
+            System.out.println("**********************************************"+Thread.currentThread().getName()+"---锁释放成功...");
+            DISTRIBUTE_LOCK.countDown();
         } catch (Exception e) {
             System.out.println("释放锁失败...");
             e.printStackTrace();
@@ -130,10 +131,10 @@ public class ZkLockUtil {
                     }
                     System.out.println(Thread.currentThread().getName()+":我买完了,有请下一位...");
                     try {
-                        ZkLockUtil.addWatcher2Path("/" + ZK_LOCK_PROJECT);
-                        System.out.println("添加完毕...");
-                        ZkLockUtil.release("/" + ZK_LOCK_PROJECT + "/" + DISTRIBUTE_LOCK_NAME);
+                        ZkLockUtil.addWatcher2Path("/zk-lock");
                         System.out.println("释放完毕...");
+                        ZkLockUtil.release("/zk-lock/distribute-lock");
+                        System.out.println("添加完毕...");
                         Thread.sleep(1000);
 
                     } catch (Exception e) {

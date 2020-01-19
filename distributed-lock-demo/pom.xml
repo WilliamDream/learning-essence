@@ -11,6 +11,54 @@
 
     <groupId>com.william.distributedlock</groupId>
     <artifactId>distributed-lock-demo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>stock-service</module>
+        <module>order-service</module>
+        <module>shopping-service</module>
+        <module>common-api</module>
+    </modules>
 
+    <properties>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <spring-boot-start.version>2.0.8.RELEASE</spring-boot-start.version>
+        <spring-boot-start-web.version>2.1.1.RELEASE</spring-boot-start-web.version>
+        <spring-cloud-feign.version>1.4.6.RELEASE</spring-cloud-feign.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot</artifactId>
+                <version>${spring-boot-start.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-start-web.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-feign</artifactId>
+                <version>${spring-cloud-feign.version}</version>
+            </dependency>
+
+
+        </dependencies>
+
+    </dependencyManagement>
 
 </project>

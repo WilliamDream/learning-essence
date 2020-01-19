@@ -10,7 +10,9 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @Auther: chaiz
  * @Date: 2020/1/17 14:13
- * @Description: https://www.jianshu.com/p/df99f8a371ae
+ * @Description:
+ * https://www.jianshu.com/p/df99f8a371ae
+ * https://blog.csdn.net/lovexiaotaozi/article/details/83382128
  */
 public class CuratorDistributedLock {
 

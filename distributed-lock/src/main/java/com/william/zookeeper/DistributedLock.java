@@ -61,7 +61,7 @@ public class DistributedLock implements Lock,Watcher{
             //获取第一个节点
             String firstNode = sortedSet.first();
             SortedSet<String> node = sortedSet.headSet(CURRENT_LOCK);
-            //当前节点与第一个节点进行笔记，相同则成功获取到锁
+            //当前节点与第一个节点进行比较，相同则成功获取到锁
             if(CURRENT_LOCK.equals(node)){
                 System.out.println(Thread.currentThread().getName()+"获得锁成功");
                 return true;    //获取锁成功

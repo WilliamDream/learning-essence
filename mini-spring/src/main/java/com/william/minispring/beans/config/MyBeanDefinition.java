@@ -2,8 +2,9 @@ package com.william.minispring.beans.config;
 
 /**
  * @Author: WilliamDream
- * @Description:
- * @Date: 2019/12/22 16:15
+ * @Description: Spring中BeanDefinition是接口，他的实现类如XmlBeanDefinition、AnnotationBeanDefiniton等
+ * 这里直接写为普通类
+ * @Date: 2019/9/22 16:15
  */
 public class MyBeanDefinition {
 

@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * @Author: WilliamDream
- * @Description:
+ * @Description: 此类不写为接口了，Spring中该类为接口
  * @Date: 2019/12/22 16:01
  */
 public class MyApplicationContext extends MyDefaultListableBeanFactory implements MyBeanFactory{

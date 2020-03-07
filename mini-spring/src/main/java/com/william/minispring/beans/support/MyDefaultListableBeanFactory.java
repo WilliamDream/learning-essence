@@ -18,7 +18,7 @@ public class MyDefaultListableBeanFactory extends MyAbstractApplicationContext i
 
 
     @Override
-    public Object getBean(String beanName) {
+    public Object getBean(String beanName)throws Exception {
         return null;
     }
 }

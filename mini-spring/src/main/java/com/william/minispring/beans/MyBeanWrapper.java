@@ -7,11 +7,23 @@ package com.william.minispring.beans;
  */
 public class MyBeanWrapper {
 
-    Object getWrappedInstance(){
-        return null;
+    private Object wrappedInstance;
+
+    private Class<?> wrappedClass;
+
+    public MyBeanWrapper() {
     }
 
-    Class<?> getWrappedClass(){
-        return null;
+    public MyBeanWrapper(Object wrappedInstance) {
+        this.wrappedInstance = wrappedInstance;
+    }
+
+
+    public Object getWrappedInstance(){
+        return this.wrappedInstance;
+    }
+
+    public Class<?> getWrappedClass(){
+        return this.wrappedClass;
     }
 }

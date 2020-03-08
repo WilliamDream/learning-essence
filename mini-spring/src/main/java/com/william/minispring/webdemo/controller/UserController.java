@@ -1,10 +1,10 @@
 package com.william.minispring.webdemo.controller;
 
 
-import com.william.minispring.annotation.MyAutoWired;
-import com.william.minispring.annotation.MyController;
-import com.william.minispring.annotation.MyRequestMapping;
-import com.william.minispring.annotation.MyRequestParam;
+import com.william.minispring.framework.annotation.MyAutoWired;
+import com.william.minispring.framework.annotation.MyController;
+import com.william.minispring.framework.annotation.MyRequestMapping;
+import com.william.minispring.framework.annotation.MyRequestParam;
 import com.william.minispring.webdemo.service.IUserService;
 
 /**

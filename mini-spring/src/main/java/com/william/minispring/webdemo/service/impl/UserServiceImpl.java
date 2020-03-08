@@ -1,7 +1,7 @@
 package com.william.minispring.webdemo.service.impl;
 
 
-import com.william.minispring.annotation.MyService;
+import com.william.minispring.framework.annotation.MyService;
 import com.william.minispring.webdemo.service.IUserService;
 
 /**

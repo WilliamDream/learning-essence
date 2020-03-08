@@ -3,6 +3,11 @@ package com.william.minispring.framework.context;
 import com.william.minispring.framework.annotation.MyAutoWired;
 import com.william.minispring.framework.annotation.MyController;
 import com.william.minispring.framework.annotation.MyService;
+import com.william.minispring.framework.aop.MyAopProxy;
+import com.william.minispring.framework.aop.MyCglibAopProxy;
+import com.william.minispring.framework.aop.MyJdkDynamicAopProxy;
+import com.william.minispring.framework.aop.config.MyAopConfig;
+import com.william.minispring.framework.aop.support.MyAdvisedSupport;
 import com.william.minispring.framework.beans.MyBeanFactory;
 import com.william.minispring.framework.beans.MyBeanWrapper;
 import com.william.minispring.framework.beans.config.MyBeanDefinition;
@@ -56,6 +61,7 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
 //        }
         //3.把这个对象封装到BeanWrapper
         MyBeanWrapper beanWrapper = new MyBeanWrapper(instance);
+
         //把BeanWrapper保存到IOC容器中去
         this.factoryBeanInstanceCache.put(beanName,beanWrapper);
         postProcessor.postProcessAfterInitialization(instance,beanName);
@@ -81,6 +87,15 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
             }else {
                 Class<?> clazz = Class.forName(className);
                 instance = clazz.newInstance();
+                MyAdvisedSupport config = instantionAopConfig(myBeanDefinition);
+                config.setTarget(instance);
+                config.setTargetClass(clazz);
+
+                //如果是切点就创建代理对象
+                if(config.pointCutMatch()){
+                   instance = createProxy(config).getProxy();
+                }
+
                 this.singletonObjects.put(className,instance);
                 this.singletonObjects.put(myBeanDefinition.getFactoryBeanName(),instance);
             }
@@ -92,6 +107,27 @@ public class MyApplicationContext extends MyDefaultListableBeanFactory implement
         //4.把BeanWrapper保存到IOC容器中
         return instance;
     }
+
+    private MyAopProxy createProxy(MyAdvisedSupport config) {
+        Class targetClass = config.getTargetClass();
+        if(targetClass.getInterfaces().length>0){
+            return new MyJdkDynamicAopProxy(config);
+        }
+        return new MyCglibAopProxy(config);
+    }
+
+    private MyAdvisedSupport instantionAopConfig(MyBeanDefinition myBeanDefinition) {
+        MyAopConfig config = new MyAopConfig();
+        config.setPointCut(this.reader.getConfig().getProperty("pointCut"));
+        config.setAspectClass(this.reader.getConfig().getProperty("aspectClass"));
+        config.setAspectBefore(this.reader.getConfig().getProperty("aspectBefore"));
+        config.setAspectAfter(this.reader.getConfig().getProperty("aspectAfter"));
+        config.setAspectAfterThrow(this.reader.getConfig().getProperty("aspectAfterThrow"));
+        config.setAspectAfterThrowing(this.reader.getConfig().getProperty("aspectAfterThrowingName"));
+        return new MyAdvisedSupport(config);
+    }
+
+
 
     private void populateBean(String beanName,MyBeanDefinition beanDefinition,MyBeanWrapper beanWrapper){
         Object instance = beanWrapper.getWrappedInstance();

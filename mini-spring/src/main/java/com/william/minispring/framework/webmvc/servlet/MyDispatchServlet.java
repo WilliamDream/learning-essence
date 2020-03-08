@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,10 +47,7 @@ public class MyDispatchServlet extends HttpServlet {
         try {
             this.doDispatch(req,res);
         } catch (Exception e) {
-            Map<String,Object> model = new HashMap<String,Object>();
-            model.put("detail",e.getCause().getMessage());
-            model.put("stackTrace",e.getCause().getStackTrace());
-            processDispatchResult(req,res,new MyModelAndView("500"));
+            res.getWriter().write("500 Exception,Details:\r\n" + Arrays.toString(e.getStackTrace()).replaceAll("\\[|\\]", "").replaceAll(",\\s", "\r\n"));
             e.printStackTrace();
         }
     }

@@ -13,6 +13,7 @@ public class MyAopConfig {
     private String aspectClass;
     private String aspectAfterThrow;
     private String aspectAfterThrowing;
+    private String aspectAfterThrowingName;
 
     public String getPointCut() {
         return pointCut;
@@ -60,5 +61,13 @@ public class MyAopConfig {
 
     public void setAspectAfterThrowing(String aspectAfterThrowing) {
         this.aspectAfterThrowing = aspectAfterThrowing;
+    }
+
+    public String getAspectAfterThrowingName() {
+        return aspectAfterThrowingName;
+    }
+
+    public void setAspectAfterThrowingName(String aspectAfterThrowingName) {
+        this.aspectAfterThrowingName = aspectAfterThrowingName;
     }
 }

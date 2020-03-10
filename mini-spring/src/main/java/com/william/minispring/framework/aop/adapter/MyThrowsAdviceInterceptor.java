@@ -12,16 +12,25 @@ import java.lang.reflect.Method;
  */
 public class MyThrowsAdviceInterceptor extends MyAbstractAspectAdvice implements MyMethodInterceptor {
 
+    private String throwName;
+
+
     public MyThrowsAdviceInterceptor(Method method, Object aspectTarget) {
         super(method, aspectTarget);
     }
 
     @Override
-    public Object invoke(MyMethodInvocation invocation) throws Throwable {
-        return null;
+    public Object invoke(MyMethodInvocation mi) throws Throwable {
+        try {
+            return mi.proceed();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            throw throwable;
+        }
+
     }
 
     public void setThrowName(String name){
-
+        this.throwName = name;
     }
 }

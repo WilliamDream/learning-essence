@@ -1,5 +1,7 @@
 package com.william.minispring.webdemo.aspect;
 
+import com.william.minispring.framework.aop.intercept.MyJoinPoint;
+
 /**
  * @Auther: williamdream
  * @Date: 2019/10/11 15:01
@@ -8,7 +10,7 @@ package com.william.minispring.webdemo.aspect;
 public class LogAspect {
 
 
-    public void before(){
+    public void before(MyJoinPoint joinPoint){
 
     }
 

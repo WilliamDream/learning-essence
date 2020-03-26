@@ -19,7 +19,8 @@
         <module>distributed-tx-demo</module>
         <module>zookeeper-demo</module>
         <module>rpc-server</module>
-        <module>rpc-client</module>
+        <module>rpc-v1</module>
+        <module>rpc-v2</module>
     </modules>
 
 </project>

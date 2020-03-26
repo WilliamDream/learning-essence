@@ -1,6 +1,8 @@
 package com.william.rmi.register;
 
 
+import org.apache.curator.framework.CuratorFramework;
+
 /**
  * @Author: WilliamDream
  * @Description:

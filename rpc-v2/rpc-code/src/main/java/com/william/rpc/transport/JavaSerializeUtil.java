@@ -1,4 +1,4 @@
-package com.william.rpc;
+package com.william.rpc.transport;
 
 
 import java.io.*;
@@ -11,7 +11,7 @@ public class JavaSerializeUtil {
      * @param <T>
      * @return
      */
-    public <T> byte[] serialize(T object){
+    public static  <T> byte[] serialize(T object){
         //序列化是输出字节数值，所以是ByteArrayOutputStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
@@ -28,11 +28,10 @@ public class JavaSerializeUtil {
     /**
      * 反序列化
      * @param data
-     * @param Clazz
      * @param <T>
      * @return
      */
-    public <T> T deserialize(byte[] data, Class<T> Clazz){
+    public static  <T> T deserialize(byte[] data){
         //反序列化是将字节数组作为输入对象，所以是ByteArrayInputStream
         ByteArrayInputStream bais = new ByteArrayInputStream(data);
         try {

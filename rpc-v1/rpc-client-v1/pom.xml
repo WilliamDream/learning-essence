@@ -12,7 +12,7 @@
     <groupId>com.william.rpc</groupId>
     <artifactId>rpc-client-v1</artifactId>
 
-    <name>rpc-client</name>
+    <name>rpc-client-v1</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

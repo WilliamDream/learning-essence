@@ -13,7 +13,6 @@
     <artifactId>rpc-v2</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>rpc-server-v2</module>
         <module>rpc-server-provider</module>
         <module>rpc-client-consumer</module>
         <module>rpc-code</module>

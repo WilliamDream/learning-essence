@@ -14,11 +14,11 @@
         <module>mini-SpringMVC-V1</module>
         <module>spring-enable</module>
         <module>formatter-spring-boot-starter</module>
+<!--        <module>formatter-test-spring-boot-starter</module>-->
         <module>mini-spring</module>
         <module>distributed-lock-demo</module>
         <module>distributed-tx-demo</module>
         <module>zookeeper-demo</module>
-        <module>rpc-server</module>
         <module>rpc-v1</module>
         <module>rpc-v2</module>
         <module>redis-demo</module>

@@ -30,8 +30,6 @@ public class RedisDemo {
         return redisTemplate.opsForValue().get(key);
     }
 
-    public void setList(){
-        redisTemplate.opsForList().leftPush();
-    }
+
 
 }

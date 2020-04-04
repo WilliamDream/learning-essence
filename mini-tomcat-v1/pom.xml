@@ -12,7 +12,7 @@
     <groupId>com.william.tomcat</groupId>
     <artifactId>mini-tomcat-v1</artifactId>
 
-    <name>mini-tomcat</name>
+    <name>mini-tomcat-v1</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

@@ -24,6 +24,7 @@
         <module>redis-demo</module>
         <module>kafka-demo</module>
         <module>mini-tomcat-v1</module>
+        <module>mini-tomcat-v2</module>
     </modules>
 
 </project>

@@ -25,6 +25,8 @@
         <module>kafka-demo</module>
         <module>mini-tomcat-v1</module>
         <module>mini-tomcat-v2</module>
+        <module>nginx-demo</module>
+        <module>spring-tx</module>
     </modules>
 
 </project>

@@ -1,5 +1,7 @@
 package com.william.api.service.hystrix;
 
+import com.william.api.pojo.dto.OrderDto;
+import com.william.api.service.OrderService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +11,15 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class OrderServiceHystrix {
+public class OrderServiceHystrix implements OrderService {
 
+    @Override
+    public boolean createOrder(OrderDto orderDto) {
+        return false;
+    }
 
+    @Override
+    public OrderDto getOrderByOrderId(Integer orderId) {
+        return null;
+    }
 }

@@ -1,51 +1,35 @@
 package com.william.kafka.controller;
 
 
-import com.william.kafka.TaskConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/test")
 public class NewsController {
 
-//    @Autowired
-//    private TaskConfig taskExecutor;
+    private static final Logger LOG = LoggerFactory.getLogger(NewsController.class);
 
-    ExecutorService executor = Executors.newCachedThreadPool();
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
 
-    @GetMapping("/th")
-    public String Test(HttpServletRequest request){
-        System.out.println("开始");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        TaskThread t = new TaskThread();
-        executor.execute(t);
-        System.out.println("结束");
-        return "success";
+    @RequestMapping(value="/sendMessage",method= RequestMethod.GET)
+    public void send(@RequestParam(required=true) String message){
+
+//        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send("news_topic", message.getBytes());
+//        future.addCallback(success -> LOG.info("KafkaMessageProducer 发送消息成功！"),
+//                fail -> LOG.error("KafkaMessageProducer 发送消息失败！"));
+        ProducerRecord<String,String> record = new ProducerRecord<>("news_topic",message);
+        kafkaTemplate.send(record);
     }
 
 
-    @Async
-    public void longtime() {
-        System.out.println("我在执行一项耗时任务");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("完成");
-        executor.shutdown();
-    }
+
 }

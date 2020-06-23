@@ -1,5 +1,6 @@
 package com.william.api.service.hystrix;
 
+import com.william.api.service.StockService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,8 +9,15 @@ import org.springframework.stereotype.Component;
  * @Description:
  */
 @Component
-public class StockServiceHystrix {
+public class StockServiceHystrix implements StockService {
 
+    @Override
+    public Integer getStockByProductId(Integer productId) {
+        return null;
+    }
 
-
+    @Override
+    public boolean updateStockByProductId(Integer productId, Integer subCount) {
+        return false;
+    }
 }

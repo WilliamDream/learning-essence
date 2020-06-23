@@ -1,6 +1,6 @@
 package com.william.api.service.hystrix;
 
-import com.william.api.pojo.dto.OrderDto;
+import com.william.api.model.Order;
 import com.william.api.service.OrderService;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Component;
 public class OrderServiceHystrix implements OrderService {
 
     @Override
-    public boolean createOrder(OrderDto orderDto) {
+    public boolean createOrder(Order order) {
         return false;
     }
 
     @Override
-    public OrderDto getOrderByOrderId(Integer orderId) {
+    public Order getOrderByOrderId(Integer orderId) {
         return null;
     }
 }

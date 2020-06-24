@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface OrderService {
 
     @PostMapping("/order/createOrder")
-    boolean createOrder(@RequestBody Order orderDto);
+    boolean createOrder(@RequestBody Order order);
 
 
     @GetMapping("/order/getOrderByOrderId/{orderId}")

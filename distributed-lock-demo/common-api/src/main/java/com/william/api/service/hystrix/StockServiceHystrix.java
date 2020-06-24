@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class StockServiceHystrix implements StockService {
 
     @Override
-    public Integer getStockByProductId(Integer productId) {
+    public Integer getStockByProductId(Integer goodsId) {
         return null;
     }
 
     @Override
-    public boolean updateStockByProductId(Integer productId, Integer subCount) {
+    public boolean updateStockByProductId(Integer goodsId, Integer subCount) {
         return false;
     }
 }

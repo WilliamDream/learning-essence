@@ -2,27 +2,18 @@ package com.william.api.model;
 
 public class Stock {
 
-    private Integer id;
 
-    private Integer productId;
+    private Integer itemId;
 
     private Integer stockCount;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getItemId() {
+        return itemId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
     public Integer getStockCount() {

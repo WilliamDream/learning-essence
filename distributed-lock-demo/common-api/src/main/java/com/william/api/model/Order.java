@@ -1,18 +1,26 @@
 package com.william.api.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Order {
-
     private Integer orderId;
 
-    private String userId;
+    private Integer userId;
 
-    private Integer productId;
+    private Integer itemId;
 
     private Integer quantity;
 
-    private Double total;
+    private BigDecimal price;
+
+    private BigDecimal total;
+
+    private Integer orderStatus;
+
+    private Integer payStatus;
+
+    private Date closeTime;
 
     private Date createTime;
 
@@ -24,20 +32,20 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public Integer getItemId() {
+        return itemId;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
     public Integer getQuantity() {
@@ -48,12 +56,44 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public Double getTotal() {
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    public Integer getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Integer getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(Integer payStatus) {
+        this.payStatus = payStatus;
+    }
+
+    public Date getCloseTime() {
+        return closeTime;
+    }
+
+    public void setCloseTime(Date closeTime) {
+        this.closeTime = closeTime;
     }
 
     public Date getCreateTime() {

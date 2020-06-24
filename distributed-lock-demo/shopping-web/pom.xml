@@ -10,10 +10,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.william.shopping</groupId>
-  <artifactId>shopping-service</artifactId>
+  <artifactId>shopping-web</artifactId>
 
-  <name>shopping-service</name>
-  <!-- FIXME change it to the project's website -->
+  <name>shopping-web</name>
   <url>http://www.example.com</url>
 
   <properties>

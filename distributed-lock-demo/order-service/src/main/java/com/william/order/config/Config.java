@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Config {
 
-    @Value("${guojinziguan.client_id}")
-    private String appKey;
+    @Value("guojin.app")
+    private String guojinapp;
 
-    public void getConfig(){
-        System.out.println(appKey);
-    }
+
+
+
 
 }

@@ -15,7 +15,7 @@
     <modules>
         <module>stock-service</module>
         <module>order-service</module>
-        <module>shopping-service</module>
+        <module>shopping-web</module>
         <module>common-api</module>
     </modules>
 
@@ -24,6 +24,9 @@
         <spring-boot-start.version>2.0.8.RELEASE</spring-boot-start.version>
         <spring-boot-start-web.version>2.1.1.RELEASE</spring-boot-start-web.version>
         <spring-cloud-feign.version>1.4.6.RELEASE</spring-cloud-feign.version>
+        <mysql.version>5.1.41</mysql.version>
+        <mybatis.version>3.2.8</mybatis.version>
+        <pagehelper.version>4.1.3</pagehelper.version>
     </properties>
 
     <dependencyManagement>
@@ -54,6 +57,18 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-feign</artifactId>
                 <version>${spring-cloud-feign.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
 
 

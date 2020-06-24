@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.william.order.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.william.api.model.Order" >
+    <id column="orderId" property="orderId" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="itemId" property="itemId" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="orderStatus" property="orderStatus" jdbcType="TINYINT" />
+    <result column="payStatus" property="payStatus" jdbcType="TINYINT" />
+    <result column="closeTime" property="closeTime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    orderId, userId, itemId, quantity, price, total, orderStatus, payStatus, closeTime, 
+    createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from d_order
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from d_order
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.william.order.mapper.Order" useGeneratedKeys="true" keyProperty="orderId" >
+    insert into d_order (userId, itemId, quantity, 
+      price, total, orderStatus, 
+      payStatus, closeTime, createTime
+      )
+    values (#{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{total,jdbcType=DECIMAL}, #{orderStatus,jdbcType=TINYINT}, 
+      #{payStatus,jdbcType=TINYINT}, #{closeTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.william.order.mapper.Order" useGeneratedKeys="true" keyProperty="orderId" >
+    insert into d_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="itemId != null" >
+        itemId,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus,
+      </if>
+      <if test="payStatus != null" >
+        payStatus,
+      </if>
+      <if test="closeTime != null" >
+        closeTime,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="closeTime != null" >
+        #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.william.order.mapper.Order" >
+    update d_order
+    <set >
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        itemId = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="payStatus != null" >
+        payStatus = #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="closeTime != null" >
+        closeTime = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.william.order.mapper.Order" >
+    update d_order
+    set userId = #{userId,jdbcType=INTEGER},
+      itemId = #{itemId,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      total = #{total,jdbcType=DECIMAL},
+      orderStatus = #{orderStatus,jdbcType=TINYINT},
+      payStatus = #{payStatus,jdbcType=TINYINT},
+      closeTime = #{closeTime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

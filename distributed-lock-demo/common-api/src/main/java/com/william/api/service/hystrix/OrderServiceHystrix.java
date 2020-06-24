@@ -1,6 +1,5 @@
 package com.william.api.service.hystrix;
 
-import com.william.api.model.Order;
 import com.william.api.service.OrderService;
 import org.springframework.stereotype.Component;
 

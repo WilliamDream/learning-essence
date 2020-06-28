@@ -8,7 +8,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @Auther: chaiz
+ * @Auther: WilliamDream
  * @Date: 2020/1/17 14:13
  * @Description:
  * https://www.jianshu.com/p/df99f8a371ae

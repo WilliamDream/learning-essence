@@ -6,7 +6,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 
 /**
- * @Auther: chaiz
+ * @Auther: WilliamDream
  * @Date: 2020/1/13 17:28
  * @Description:
  */

@@ -5,7 +5,7 @@
     <id column="orderId" property="orderId" jdbcType="INTEGER" />
     <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="itemId" property="itemId" jdbcType="INTEGER" />
-    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="total" property="total" jdbcType="DECIMAL" />
     <result column="orderStatus" property="orderStatus" jdbcType="TINYINT" />
@@ -14,7 +14,7 @@
     <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    orderId, userId, itemId, quantity, price, total, orderStatus, payStatus, closeTime, 
+    orderId, userId, itemId, num, price, total, orderStatus, payStatus, closeTime, 
     createTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -28,11 +28,11 @@
     where orderId = #{orderId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.william.order.mapper.Order" useGeneratedKeys="true" keyProperty="orderId" >
-    insert into d_order (userId, itemId, quantity, 
+    insert into d_order (userId, itemId, num, 
       price, total, orderStatus, 
       payStatus, closeTime, createTime
       )
-    values (#{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, 
+    values (#{userId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, 
       #{price,jdbcType=DECIMAL}, #{total,jdbcType=DECIMAL}, #{orderStatus,jdbcType=TINYINT}, 
       #{payStatus,jdbcType=TINYINT}, #{closeTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
       )
@@ -46,8 +46,8 @@
       <if test="itemId != null" >
         itemId,
       </if>
-      <if test="quantity != null" >
-        quantity,
+      <if test="num != null" >
+        num,
       </if>
       <if test="price != null" >
         price,
@@ -75,8 +75,8 @@
       <if test="itemId != null" >
         #{itemId,jdbcType=INTEGER},
       </if>
-      <if test="quantity != null" >
-        #{quantity,jdbcType=INTEGER},
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
         #{price,jdbcType=DECIMAL},
@@ -107,8 +107,8 @@
       <if test="itemId != null" >
         itemId = #{itemId,jdbcType=INTEGER},
       </if>
-      <if test="quantity != null" >
-        quantity = #{quantity,jdbcType=INTEGER},
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=DECIMAL},
@@ -135,7 +135,7 @@
     update d_order
     set userId = #{userId,jdbcType=INTEGER},
       itemId = #{itemId,jdbcType=INTEGER},
-      quantity = #{quantity,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       total = #{total,jdbcType=DECIMAL},
       orderStatus = #{orderStatus,jdbcType=TINYINT},

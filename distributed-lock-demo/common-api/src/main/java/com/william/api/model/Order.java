@@ -10,7 +10,7 @@ public class Order {
 
     private Integer itemId;
 
-    private Integer quantity;
+    private Integer num;
 
     private BigDecimal price;
 
@@ -48,12 +48,12 @@ public class Order {
         this.itemId = itemId;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setNum(Integer num) {
+        this.num = num;
     }
 
     public BigDecimal getPrice() {

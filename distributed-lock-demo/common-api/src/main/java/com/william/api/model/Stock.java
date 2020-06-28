@@ -1,11 +1,15 @@
 package com.william.api.model;
 
+
 public class Stock {
 
 
     private Integer itemId;
 
     private Integer stockCount;
+
+
+    private Integer subCount;
 
 
     public Integer getItemId() {
@@ -22,5 +26,13 @@ public class Stock {
 
     public void setStockCount(Integer stockCount) {
         this.stockCount = stockCount;
+    }
+
+    public Integer getSubCount() {
+        return subCount;
+    }
+
+    public void setSubCount(Integer subCount) {
+        this.subCount = subCount;
     }
 }

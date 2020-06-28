@@ -1,4 +1,4 @@
-package com.william.order.mapper;
+package com.william.stock.mapper;
 
 import com.william.api.model.Stock;
 

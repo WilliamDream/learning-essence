@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.william.order.mapper.StockMapper" >
+<mapper namespace="com.william.stock.mapper.StockMapper" >
   <resultMap id="BaseResultMap" type="com.william.api.model.Stock" >
     <id column="itemId" property="itemId" jdbcType="INTEGER" />
     <result column="stockCount" property="stockCount" jdbcType="INTEGER" />
@@ -44,8 +44,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.william.order.mapper.Stock" >
     update d_stock
     <set >
-      <if test="stockCount != null" >
-        stockCount = #{stockCount,jdbcType=INTEGER},
+      <if test="subCount != null" >
+        stockCount = stockCount - ${subCount},
       </if>
     </set>
     where itemId = #{itemId,jdbcType=INTEGER}

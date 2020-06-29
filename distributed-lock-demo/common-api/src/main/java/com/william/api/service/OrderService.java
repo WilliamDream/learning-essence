@@ -9,7 +9,7 @@ import com.william.api.model.Order;
  */
 public interface OrderService {
 
-    boolean createOrder(Order order);
+    boolean createOrder(Integer userId, Integer itemId, Integer num);
 
 
     Order getOrderByOrderId(Integer orderId);

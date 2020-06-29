@@ -48,7 +48,7 @@ public class DistributedLockUtil {
     /**
      * 获取分布式锁
      */
-    public static void acquireDistributedLock(String ORDER_PATH_LOCK) {
+    public static void acquireDistributedLock() {
         String keyPath = "/" + ROOT_PATH_LOCK + "/" + ORDER_PATH_LOCK;
         CuratorFramework curatorFramework = build();
         curatorFramework.start();
@@ -79,7 +79,7 @@ public class DistributedLockUtil {
     /**
      * 释放分布式锁
      */
-    public static boolean releaseDistributedLock(String ORDER_PATH_LOCK) {
+    public static boolean releaseDistributedLock() {
         try {
             String keyPath = "/" + ROOT_PATH_LOCK + "/" + ORDER_PATH_LOCK;
             CuratorFramework curatorFramework = build();

@@ -3,7 +3,7 @@ package com.william.shopping.controller;
 
 import com.william.shopping.service.ShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,9 +14,8 @@ public class ShoppingController {
     @Autowired
     private ShoppingService service;
 
-    @GetMapping
-    public String shopping(Integer itemId,Integer num){
-
-        return "";
+    @PostMapping("/order")
+    public String shopping(Integer userId, Integer itemId,Integer num){
+        return service.shopping(userId,itemId,num);
     }
 }

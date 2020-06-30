@@ -1,5 +1,7 @@
 package com.william.order.mapper;
 
+import com.william.api.model.User;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 

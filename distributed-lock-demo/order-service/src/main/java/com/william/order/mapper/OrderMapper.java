@@ -1,7 +1,9 @@
 package com.william.order.mapper;
 
 import com.william.api.model.Order;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer orderId);
 

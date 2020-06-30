@@ -1,7 +1,9 @@
 package com.william.stock.mapper;
 
 import com.william.api.model.Stock;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface StockMapper {
     int deleteByPrimaryKey(Integer itemId);
 

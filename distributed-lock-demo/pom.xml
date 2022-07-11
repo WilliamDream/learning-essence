@@ -21,7 +21,7 @@
 
     <properties>
         <spring.version>4.3.13.RELEASE</spring.version>
-        <spring-boot-start.version>2.0.8.RELEASE</spring-boot-start.version>
+        <spring-boot-start.version>2.2.11.RELEASE</spring-boot-start.version>
         <spring-boot-start-web.version>2.1.1.RELEASE</spring-boot-start-web.version>
         <spring-cloud-feign.version>1.4.6.RELEASE</spring-cloud-feign.version>
         <mysql.version>5.1.41</mysql.version>
